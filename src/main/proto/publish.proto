@@ -13,20 +13,26 @@
 // limitations under the License.
 // Code from https://github.com/GoogleCloudPlatform/kotlin-samples/blob/main/run/grpc-hello-world-streaming/src/main/proto/hello_world.proto
 syntax = "proto3";
-package greeter;
+package GrpcAgent;
 
 option java_multiple_files = true;
 
-service Greeter {
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-  rpc SayHelloStream (HelloRequest) returns (stream HelloReply) {}
-  rpc SayHelloBidiStream (stream HelloRequest) returns (stream HelloReply) {}
+service Publisher {
+  rpc PublishMessage (PublishRequest) returns (PublishReply) {}
+  rpc ListenMessage (stream PublishRequest) returns (stream TopicReply) {}
+//  rpc SayHelloStream (HelloRequest) returns (stream HelloReply) {}
+//  rpc SayHelloBidiStream (stream HelloRequest) returns (stream HelloReply) {}
 }
 
-message HelloRequest {
-  string name = 1;
+message PublishRequest {
+  string topic = 1;
+  string content = 2;
 }
 
-message HelloReply {
-  string message = 1;
+message PublishReply {
+  string isSuccess = 1;
+}
+
+message TopicReply {
+  string content = 1;
 }

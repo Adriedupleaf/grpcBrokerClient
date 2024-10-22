@@ -48,8 +48,11 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java-util:$protobufVersion")
     runtimeOnly("io.grpc:grpc-netty-shaded:$grpcVersion")
     testImplementation(kotlin("test"))
+    implementation("com.google.code.gson:gson:2.8.8")
 }
-
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
 tasks.test {
     useJUnitPlatform()
 }

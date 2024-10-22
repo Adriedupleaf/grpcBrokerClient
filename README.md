@@ -16,7 +16,7 @@ And in another console:
 You can use a tool like [`grpcui`](https://github.com/fullstorydev/grpcui) to interact with the gRPC server.
 For the server as its configured here, use the following command:
 ```shell
- grpcui -plaintext -proto src/main/proto/greeter.proto localhost:50051
+ grpcui -plaintext -proto src/main/proto/publish.proto localhost:
 ```
 
 ## Prior Art
